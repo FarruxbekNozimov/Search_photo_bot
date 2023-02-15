@@ -1,0 +1,21 @@
+{
+	"name": "searchphoto-bot",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	},
+	"keywords": [],
+	"author": "FarruxDEV",
+	"license": "ISC",
+	"dependencies": {
+		"node-fetch": "^3.3.0",
+		"node-telegram-bot-api": "^0.61.0",
+		"nodemon": "^2.0.20",
+		"pexels": "^1.4.0",
+		"telegraf": "^4.11.2"
+	}
+}

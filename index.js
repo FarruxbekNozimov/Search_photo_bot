@@ -16,17 +16,26 @@ bot.start((ctx) => {
 
 bot.on("message", async (ctx) => {
 	let text = ctx.update.message.text;
-	console.log(text);
+	let chatId = ctx.update.message.from.id;
+	console.log(text, chatId);
 	try {
 		const options = { page: 1 };
 		client
 			.search(text, options)
 			.then((images) => {
 				console.log(images);
+				images = images.slice(0, 4);
 				for (let i in images) {
-					console.log(images[i].url.slice(images[i].url.lastIndexOf(".")));
-					console.log(images[i].url.slice(-images[i].url.lastIndexOf(".")));
-					ctx.replyWithPhoto(images[i].url);
+					if (
+						["jpg", "jpeg", "png"].includes(
+							images[i].url.slice(images[i].url.lastIndexOf(".") + 1)
+						)
+					)
+						try {
+							ctx.replyWithPhoto(images[i].url);
+						} catch (error) {
+							console.log(images[i].url, "XATO");
+						}
 				}
 			})
 			.catch((error) => console.log("XATO"));
